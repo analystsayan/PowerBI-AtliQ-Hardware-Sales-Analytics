@@ -4,11 +4,7 @@ An interactive **Power BI Sales Analytics Dashboard** for analyzing sales perfor
 
 ## Live Dashboard
 
-**[View Interactive Power BI Dashboard](YOUR_POWER_BI_PUBLIC_LINK)**
-
-Replace `YOUR_POWER_BI_PUBLIC_LINK` with your Power BI public report URL.
-
-> **Note:** Power BI **Publish to web** makes the report publicly accessible without authentication. Only use it when the underlying data is safe for public sharing.
+**[View Interactive Power BI Dashboard](https://app.powerbi.com/view?r=eyJrIjoiYzc3YmExMTUtMjAyOS00NTU1LWFjZTgtZjk1NGExMzcyZTE0IiwidCI6ImJhZjhjOTk5LWQzY2EtNGY5NC04NjMyLTI3MDU2OTIwZmI1ZSJ9)**
 
 ## Dashboard Preview
 
@@ -197,67 +193,8 @@ AtliQ-Hardware-Sales-Analytics/
 │   └── Dashboard.png
 │
 └── docs/
-    ├── data-model.png
-    └── screenshots/
+    └── data-model.png
 ```
-
-## Power BI Project Format
-
-For GitHub/source control, use **Power BI Project (PBIP)** rather than keeping only a `.pbix` file.
-
-PBIP separates report and semantic-model definitions into project files and folders, making the project easier to organize and version-control.
-
-Keep a `.pbix` copy separately as a backup if required.
-
-## How to View
-
-### Interactive Dashboard
-Use the **Live Dashboard** link at the top of this README.
-
-### Power BI Project
-1. Clone/download this repository.
-2. Open the `.pbip` file in a compatible version of Power BI Desktop.
-3. Review the report and semantic model.
-4. Refresh the data if the required source connection is available.
-
-### Dashboard Screenshot
-The `assets` folder contains a static dashboard preview.
-
-## How to Present the Project
-
-Use this presentation flow:
-
-**1. Business Problem**  
-Explain the objective of converting transactional sales data into an interactive analytical dashboard.
-
-**2. Data Source**  
-Introduce the Customers, Products, Markets, Date, and Transactions tables.
-
-**3. Data Preparation**  
-Explain cleaning, transformations, data types, and relationships.
-
-**4. Data Model**  
-Show the fact/dimension structure.
-
-**5. DAX & KPIs**  
-Explain the measures used for revenue, sales quantity, profit, and margin.
-
-**6. Dashboard**  
-Walk through KPI cards, market analysis, revenue trends, products, and customers.
-
-**7. Interactivity**  
-Demonstrate the Year and Month slicers.
-
-**8. Business Insights**  
-Discuss market, customer, product, time, and profitability patterns observed from the report.
-
-## Resume Description
-
-**AtliQ Hardware Sales Analytics — Power BI**
-
-- Developed an interactive Power BI Sales Analytics dashboard analyzing **984.81M revenue and 2M sales quantity** across markets, products, customers, and time.
-- Performed data preparation, dimensional data modeling, and DAX-based KPI development for revenue, sales quantity, profit, and margin analysis.
-- Built interactive market, product, customer, and time-based visualizations to support sales-performance analysis.
 
 ## Skills Demonstrated
 
@@ -273,14 +210,6 @@ Discuss market, customer, product, time, and profitability patterns observed fro
 - KPI Development
 - Interactive Dashboard Design
 - GitHub Documentation
-
-## Data Privacy & Public Sharing
-
-If using **Power BI Publish to web**, verify that the dataset is suitable for public distribution.
-
-Publish to web does **not** provide private access control. Anyone on the internet can view a published report without authentication, and detail-level data available through the published model may also be accessible.
-
-Do not publish confidential, personal, proprietary, or restricted data.
 
 ## Future Improvements
 
