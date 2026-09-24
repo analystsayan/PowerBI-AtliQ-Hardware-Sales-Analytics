@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "AtliQ-Hardware-Sales-Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "77c04bec-6dbe-4753-a58b-a59175fd5c3d"
+  }
+}

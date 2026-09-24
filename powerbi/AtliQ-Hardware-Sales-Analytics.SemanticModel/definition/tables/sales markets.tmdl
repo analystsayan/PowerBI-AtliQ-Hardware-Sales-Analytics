@@ -1,0 +1,41 @@
+table 'sales markets'
+	lineageTag: 542a45dc-22aa-4b6d-a0f1-48f4da190d4d
+
+	column markets_code
+		dataType: string
+		lineageTag: 12e46187-4c5a-46df-8c5c-33050b21bd36
+		summarizeBy: none
+		sourceColumn: markets_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column markets_name
+		dataType: string
+		lineageTag: 692ef778-42af-41cc-8435-7a6db32a0f6d
+		summarizeBy: none
+		sourceColumn: markets_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column zone
+		dataType: string
+		lineageTag: 2ea81dd6-4eeb-43b9-91da-72ac35d07d20
+		summarizeBy: none
+		sourceColumn: zone
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'sales markets' = m
+		mode: import
+		source =
+				let
+				  Source = MySQL.Database("localhost", "sales"),
+				  #"Navigation 1" = Source{[Schema = "sales", Item = "markets"]}[Data],
+				    #"Remove NYC and Paris" = Table.SelectRows(#"Navigation 1", each ([zone] <> ""))
+				in
+				  #"Remove NYC and Paris"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,71 @@
+table 'sales date'
+	lineageTag: 16bbd638-86e0-453d-b32e-04b69b0285ed
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2f347212-576f-4d8f-be00-6f4a02b40f5e
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: a667f905-d104-4f61-88e6-46622fc45064
+			defaultHierarchy: LocalDateTable_17ee2cca-3e9f-48a4-bdd4-4f9e185d5354.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cy_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 68e22f24-5fab-420f-8426-d424dc838267
+		summarizeBy: none
+		sourceColumn: cy_date
+
+		variation Variation
+			isDefault
+			relationship: e88cfc36-98a8-4399-89da-f7bcca284213
+			defaultHierarchy: LocalDateTable_b2a225b7-9de3-44c0-a721-52208a39d286.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: a117ca76-7b10-4899-b1f5-3d62e35688d2
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: e824e607-78a0-40e6-bbc8-27fc8c42551a
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_yy_mmm
+		dataType: string
+		lineageTag: 9892a4aa-98a1-4a03-967e-2bff86df25f3
+		summarizeBy: none
+		sourceColumn: date_yy_mmm
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'sales date' = m
+		mode: import
+		source =
+				let
+				  Source = MySQL.Database("localhost", "sales"),
+				  #"Navigation 1" = Source{[Schema = "sales", Item = "date"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

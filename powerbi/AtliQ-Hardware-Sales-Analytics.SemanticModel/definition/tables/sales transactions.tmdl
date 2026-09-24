@@ -1,0 +1,106 @@
+table 'sales transactions'
+	lineageTag: 303fb269-af48-4d66-876e-89e7f2044b9c
+
+	column product_code
+		dataType: string
+		lineageTag: b98c426c-53d5-4c37-9732-d2f0409f8e05
+		summarizeBy: none
+		sourceColumn: product_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_code
+		dataType: string
+		lineageTag: 2f9b47be-902c-403e-ad23-53890faafec7
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column market_code
+		dataType: string
+		lineageTag: fd2903f3-908e-4271-a2a8-993e7cd8d75c
+		summarizeBy: none
+		sourceColumn: market_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1dedbc84-97ae-4df7-b25d-a1cba02c5b86
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column sales_qty
+		dataType: int64
+		formatString: 0
+		lineageTag: a6282594-c68b-4731-b108-ee36e3bda5da
+		summarizeBy: sum
+		sourceColumn: sales_qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_amount
+		dataType: double
+		lineageTag: d878d9e3-0034-4823-8438-5c6c53fa0031
+		summarizeBy: sum
+		sourceColumn: sales_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column currency
+		dataType: string
+		lineageTag: 4b26ff00-33c6-4109-b530-6b6887493ea5
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column profit_margin_percentage
+		dataType: double
+		lineageTag: ba937dcd-cc83-47f9-b202-5a68540663f4
+		summarizeBy: sum
+		sourceColumn: profit_margin_percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column profit_margin
+		dataType: double
+		lineageTag: d8bbb95d-b24b-41b2-9df6-bd7d3bb091a9
+		summarizeBy: sum
+		sourceColumn: profit_margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cost_price
+		dataType: double
+		lineageTag: 5ac13e54-82bf-4d2b-8505-c2be71a15cb3
+		summarizeBy: sum
+		sourceColumn: cost_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'sales transactions' = m
+		mode: import
+		source =
+				let
+				  Source = MySQL.Database("localhost", "sales"),
+				  #"Navigation 1" = Source{[Schema = "sales", Item = "transactions"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+
